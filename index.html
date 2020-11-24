@@ -28,9 +28,14 @@
         background-color: aqua;
       }
       .clasic-button {
-        color: black;
-        height: 35px;
-        background-color: white;
+        color: white;
+        font-size: 10px;
+        height: 25px;
+        background-color: #008cba;
+        border: none;
+        padding: 5px;
+        outline: none;
+        border-radius: 3px;
       }
     </style>
   </head>
@@ -41,6 +46,7 @@
     <div id="container" class="container"></div>
 
     <div id="mainBox" class="box"></div>
+    <br />
 
     <button id="leftButton" class="clasic-button">Izquierda</button>
     <button id="rightButton" class="clasic-button">Derecha</button>
@@ -73,16 +79,14 @@
     var contador = 0;
     var posicionCaja = 0;
     leftButton.addEventListener("click", () => {
-      var nuevaPosicion = posicionCaja - 10 * contador;
-      var avanzar = nuevaPosicion;
-      mainBox.style.marginLeft = avanzar + "px";
+      posicionCaja = posicionCaja - 10;
+      mainBox.style.marginLeft = posicionCaja + "px";
       contador++;
     });
 
     rightButton.addEventListener("click", () => {
-      var nuevaPosicion = posicionCaja + 10 * contador;
-      var avanzar = nuevaPosicion;
-      mainBox.style.marginLeft = avanzar + "px";
+      posicionCaja = posicionCaja + 10;
+      mainBox.style.marginLeft = posicionCaja + "px";
       contador++;
     });
 
