@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .label-titulo {
+        color: red;
+        font-size: 24px;
+        font-weight: 300;
+      }
+      .label-titulo:hover {
+        color: aqua;
+      }
+      .label-titulo-bold {
+        font-weight: bold;
+        font-style: italic;
+      }
+      .box {
+        width: 40px;
+        height: 4px;
+        min-width: 40px;
+        min-height: 40px;
+        background-color: aquamarine;
+      }
+      .box:hover {
+        background-color: aqua;
+      }
+      .clasic-button {
+        color: black;
+        height: 35px;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="tituloHelloAkemi" class="label-titulo">Hello Akemi</h1>
+    <h1 class="label-titulo label-titulo-bold">Otro titulo</h1>
+
+    <div id="container" class="container"></div>
+
+    <div id="mainBox" class="box"></div>
+
+    <button id="leftButton" class="clasic-button">Izquierda</button>
+    <button id="rightButton" class="clasic-button">Derecha</button>
+
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </body>
+  <script>
+    var elemntoAkemi = document.getElementById("tituloHelloAkemi");
+    var elementosLabelTitulo = document.getElementsByClassName("label-titulo");
+    var h1s = document.getElementsByTagName("li");
+
+    var container = document.getElementById("container");
+
+    var leftButton = document.getElementById("leftButton");
+    var rightButton = document.getElementById("rightButton");
+    var mainBox = document.getElementById("mainBox");
+
+    elemntoAkemi.addEventListener("click", () => {
+      var tagP = document.createElement("p");
+      var text = document.createTextNode("CONTENT " + contador);
+      tagP.appendChild(text);
+      container.appendChild(tagP);
+      contador++;
+    });
+
+    var contador = 0;
+    var posicionCaja = 0;
+    leftButton.addEventListener("click", () => {
+      var nuevaPosicion = posicionCaja - 10 * contador;
+      var avanzar = nuevaPosicion;
+      mainBox.style.marginLeft = avanzar + "px";
+      contador++;
+    });
+
+    rightButton.addEventListener("click", () => {
+      var nuevaPosicion = posicionCaja + 10 * contador;
+      var avanzar = nuevaPosicion;
+      mainBox.style.marginLeft = avanzar + "px";
+      contador++;
+    });
+
+    // mainBox.addEventListener("click", () => {
+    //   var avanzar = 100 * contador;
+    //   mainBox.style.marginLeft = avanzar + "px";
+    //   contador++;
+    // });
+
+    console.log("elemntoAkemi", elemntoAkemi);
+    console.log("elementosLabelTitulo", elementosLabelTitulo);
+    console.log("h1s", h1s);
+  </script>
+</html>
