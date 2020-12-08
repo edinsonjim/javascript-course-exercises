@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .fullscreen-body {
+        margin: 0;
+      }
+      .template-pagina {
+      }
+      .template-header {
+        width: 100%;
+        height: 80px;
+        background-color: #084ea0;
+      }
+      .template-body {
+        display: flex;
+      }
+      .template-barra-menu {
+        width: 360px;
+        max-width: 360px;
+        /* height: 100%; 100% se adapta al contenido */
+        height: 100vh; /*100vh obtiene al alto de la ventana*/
+        background-color: #263a65;
+        display: inline-block;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .boton-menu {
+        height: 34px;
+        width: 321px;
+        background-color: #ffffff;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .boton-menu:hover {
+        background-color: #084ea0;
+        color: #ffffff;
+      }
+
+      .template-content {
+        border: 1px solid #707070;
+        width: 100%;
+        height: 100%;
+        min-height: 100px;
+        margin-top: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+      .post-items {
+      }
+      .post-item {
+        display: none; /* no mostrar el contenido */
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 15px;
+      }
+      .post-header {
+        display: flex;
+        align-items: center;
+      }
+      .post-main-info {
+        margin-left: 15px;
+      }
+      .post-info-title {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .post-profile-photo {
+        min-width: 88px;
+        min-height: 88px;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        border: 1px solid #000000;
+      }
+      .post-content {
+        margin-top: 10px;
+      }
+      .post-divider {
+        width: 100%;
+        height: 5px;
+        background-color: #084ea0;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body class="fullscreen-body">
+    <div class="template-pagina">
+      <div class="template-header"></div>
+      <div class="template-body">
+        <div class="template-barra-menu">
+          <div class="boton-menu cat-01">Categoria 1</div>
+          <div class="boton-menu cat-02">Categoria 2</div>
+          <div class="boton-menu cat-03">Categoria 3</div>
+          <div class="boton-menu cat-04">Categoria 4</div>
+        </div>
+        <div class="template-content">
+          <div class="post-items">
+            <div class="post-item cat-01">
+              <div class="post-header">
+                <div class="post-profile-photo"></div>
+                <div class="post-main-info">
+                  <div class="post-info-title">Titulo del post</div>
+                  <div class="post-info-author-info">
+                    Author: XXXXXX XXX [CAT-01]
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est
+                reprehenderit facere, impedit saepe repellat nesciunt distinctio
+                id ullam eveniet fugiat reiciendis nobis. Nisi magni illum
+                officia, expedita consectetur et eligendi?
+              </div>
+              <div class="post-divider"></div>
+            </div>
+            <div class="post-item cat-01">
+              <div class="post-header">
+                <div class="post-profile-photo"></div>
+                <div class="post-main-info">
+                  <div class="post-info-title">Titulo del post</div>
+                  <div class="post-info-author-info">
+                    Author: XXXXXX XXX [CAT-01]
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est
+                reprehenderit facere, impedit saepe repellat nesciunt distinctio
+                id ullam eveniet fugiat reiciendis nobis. Nisi magni illum
+                officia, expedita consectetur et eligendi?
+              </div>
+              <div class="post-divider"></div>
+            </div>
+            <div class="post-item cat-02">
+              <div class="post-header">
+                <div class="post-profile-photo"></div>
+                <div class="post-main-info">
+                  <div class="post-info-title">Titulo del post</div>
+                  <div class="post-info-author-info">
+                    Author: XXXXXX XXX [CAT-02]
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est
+                reprehenderit facere, impedit saepe repellat nesciunt distinctio
+                id ullam eveniet fugiat reiciendis nobis. Nisi magni illum
+                officia, expedita consectetur et eligendi?
+              </div>
+              <div class="post-divider"></div>
+            </div>
+            <div class="post-item cat-03">
+              <div class="post-header">
+                <div class="post-profile-photo"></div>
+                <div class="post-main-info">
+                  <div class="post-info-title">Titulo del post</div>
+                  <div class="post-info-author-info">
+                    Author: XXXXXX XXX [CAT-03]
+                  </div>
+                </div>
+              </div>
+              <div class="post-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est
+                reprehenderit facere, impedit saepe repellat nesciunt distinctio
+                id ullam eveniet fugiat reiciendis nobis. Nisi magni illum
+                officia, expedita consectetur et eligendi?
+              </div>
+              <div class="post-divider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function mostrarPost(categoryName) {
+      console.log("Categoria 1");
+      // inicia siempre oculto
+      var allItems = document.getElementsByClassName("post-item");
+      for (i = 0; i < allItems.length; i++) {
+        allItems[i].style.display = "none";
+      }
+
+      // muestra los elementos de la categoria necesaria
+      var postItems = document.getElementsByClassName(
+        "post-item " + categoryName
+      );
+      for (i = 0; i < postItems.length; i++) {
+        postItems[i].style.display = "block";
+      }
+    }
+
+    var menus = document.getElementsByClassName("boton-menu");
+
+    menus[0].addEventListener("click", () => {
+      mostrarPost("cat-01");
+    });
+    menus[1].addEventListener("click", () => {
+      mostrarPost("cat-02");
+    });
+    menus[2].addEventListener("click", () => {
+      mostrarPost("cat-03");
+    });
+  </script>
+</html>
