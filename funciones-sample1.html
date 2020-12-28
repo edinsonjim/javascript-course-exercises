@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones Ejemplo 1</title>
+  </head>
+  <body>
+    <script>
+      // JS-DOC samples:
+      // @see sirve para poner una informacion o link.
+      // @deprecated sirve para indicar que la funcion esta obsoleta y q no se debe utilizar
+      //    ejemplo: @deprecated since 1.1.0 (Aug 2020)
+      // @author Akemi Mar...
+      // @params parametros en la funcion
+      // @returns permite indicar el valor de retorno de la funcion
+
+      // TODO:
+      // dada una lista de numeros
+      // 1. crear una funcion para obtener el mayor numero de la lista
+      // 2. crear una funcion para obtener el menor numero de la lista
+      // 3. crear una funcion para obtener el promedio/media de la lista de numeros
+      var listaNumeros = [4, 100, 50, 0, 8, 88, 19, 20, 200];
+      var listaNumeros2 = [40, 10, 5, 20, 89, 890, 190, 220, 210];
+      var listaNumeros3 = [4, 5, 1, 90, 10];
+
+      /**
+       * Devuelve el numero mayor de la lista ingreesada.
+       * @params numeros lista de numeros
+       * @returns el numero mayor de la lista.
+       */
+      function obtenerMayorEnLista(numeros) {
+        var ultimoNumeroMayor = 0;
+        for (i = 0; i < numeros.length; i++) {
+          if (ultimoNumeroMayor < numeros[i]) {
+            ultimoNumeroMayor = numeros[i];
+          }
+        }
+        return ultimoNumeroMayor;
+      }
+
+      /**
+       * JS-DOC -> JavaScript Documentation
+       * @params numeros Array Arreglo de numeros
+       * @returns el numero menor de la lista
+       */
+      function obtenerMenorEnLista(numeros) {
+        var ultimoNumeroMenor = numeros[0];
+        for (i = 0; i < numeros.length; i++) {
+          if (ultimoNumeroMenor > numeros[i]) {
+            ultimoNumeroMenor = numeros[i];
+          }
+        }
+        return ultimoNumeroMenor;
+      }
+
+      /**
+       * @params numeros Array Arreglo de numeros
+       * @returns devulve el valor promedio de la lista
+       */
+      function obtenerPromedioLista(numeros) {
+        var promedio = 0;
+        var sumaTotal = 0;
+        for (i = 0; i < numeros.length; i++) {
+          sumaTotal = sumaTotal + numeros[i];
+        }
+        promedio = sumaTotal / numeros.length;
+        return promedio;
+      }
+
+      console.group("Lista 1");
+      console.log(
+        "el numero mayor de la lista 1 es:",
+        obtenerMayorEnLista(listaNumeros)
+      );
+      console.log(
+        "el numero menor de la lista 1 es:",
+        obtenerMenorEnLista(listaNumeros)
+      );
+      console.log(
+        "el promedio de la lista 1 es:",
+        obtenerPromedioLista(listaNumeros)
+      );
+      console.groupEnd();
+
+      console.group("Lista 2");
+      console.log(
+        "el numero mayor de la lista 2 es:",
+        obtenerMayorEnLista(listaNumeros2)
+      );
+      console.log(
+        "el numero menor de la lista 2 es:",
+        obtenerMenorEnLista(listaNumeros2)
+      );
+
+      console.log(
+        "el promedio de la lista 2 es:",
+        obtenerPromedioLista(listaNumeros2)
+      );
+      console.groupEnd();
+
+      console.group("Lista 3");
+      console.log(
+        "el numero mayor de la lista 3 es:",
+        obtenerMayorEnLista(listaNumeros3)
+      );
+      console.log(
+        "el numero menor de la lista 3 es:",
+        obtenerMenorEnLista(listaNumeros3)
+      );
+
+      console.log(
+        "el promedio de la lista 3 es:",
+        obtenerPromedioLista(listaNumeros3)
+      );
+      console.groupEnd();
+    </script>
+  </body>
+</html>
