@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arreglos</title>
+  </head>
+  <body>
+    <script>
+      var numeros = [1, 2, 3, 4, 5, 6];
+      var letras = ["a", "b", "c", "d", "e"];
+      var alphaNumerico = [1, "a", 2, "b", true];
+      var booleanos = [true, false, "TRUE", "FALSE", 1, 0];
+
+      var contenedorDeDatos = []; // 50% mas rapido que el new Array()
+      var contenedorDeDatos2 = new Array();
+
+      console.log("contenedorDeDatos", contenedorDeDatos);
+      console.log("contenedorDeDatos2", contenedorDeDatos2);
+
+      // arreglos a contar por el 0.
+      console.log(numeros[0], numeros[1]);
+
+      // push: agregar elementos
+      contenedorDeDatos.push(1);
+      contenedorDeDatos.push("SEGUNDO VACIO");
+      // pop: eliminar eleemtnos de la ultima posicion
+      contenedorDeDatos.pop();
+      contenedorDeDatos.shift();
+      contenedorDeDatos.unshift();
+
+      var arreglo1 = [1, 2, 3];
+      var arreglo2 = ["a", "b", "c"];
+
+      var mixArreglos = arreglo2.concat(arreglo1);
+      console.log("mixArreglos", mixArreglos);
+
+      // buscar
+      var letras = ["A", "Z", "X", "Y", "B"];
+
+      // usamos funciton
+      var existA = letras.find(function (item) {
+        // al interno de la funciton deve regresar un boolean
+        return item === "A";
+      });
+      console.log("existA", existA);
+
+      // find si existe te da el valor buscado
+      // si no existe de da 'undefined'
+      var existH = letras.find(function (item) {
+        // al interno de la funciton deve regresar un boolean
+        return item === "H";
+      });
+      console.log("existH", existH);
+
+      var indexOfY = letras.findIndex(function (item) {
+        return item === "Y";
+      });
+      console.log("indexOfY", indexOfY);
+
+      var indexOfP = letras.findIndex(function (item) {
+        return item === "P";
+      });
+      // findIndex si existe te da el indice del 0-n
+      // si no existe te da -1
+      console.log("indexOfP", indexOfP);
+      console.log("totalLetras", letras.length);
+
+      var existB = undefined;
+      letras.forEach((item) => {
+        if (item === "B") {
+          existB = item;
+        }
+      });
+      console.log("existB", existB);
+
+      // existe en memoria y tiene un valor nullo/vacio de defecto.
+      var calendario = null;
+      // no existe en memoria y no tiene ningun valor.
+      var reloj = undefined; // => var reloj;
+
+      var existLetra = undefined;
+      var letraABuscar = "XXX";
+      for (var i = 0; i < letras.length; i++) {
+        if (letras[i] === letraABuscar) {
+          existLetra = letras[i];
+        }
+      }
+      console.log("existLetra", existLetra);
+
+      // usamos arrow 'function () => {}''
+      letras.find(() => {});
+
+      // FILTER
+      var results = letras
+        .filter(function (item) {
+          return ["A", "B", "Y", "X"].includes(item);
+          // return item === "A" || item === "B";
+        })
+        .filter(function (item) {
+          return ["A", "B"].includes(item);
+        });
+
+      console.log("results", results);
+    </script>
+  </body>
+</html>
