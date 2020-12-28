@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map ejemplos</title>
+  </head>
+  <body>
+    <script>
+      // TODO:
+      // Utilizar la funcion map para transformar los elementos de la lista
+      // MAP -> es una funcion de los arreglos, que permite transformar cada elemento.
+      // 1. Cada elemento de la lista multiplicar por 28(factor multiplicador);
+      // 1. Cada elemento de la lista multiplicar por 82(factor multiplicador);
+
+      var elementos = [0, 1, 9, 7, 4, 2];
+      var FACTOR_MULTIPLICADOR_1 = 28;
+      var FACTOR_MULTIPLICADOR_2 = 82;
+
+      /**
+       * @params numeros Array lista de nuermos
+       * @params factorMultiplicador Number factor multiplicador
+       * @returns Lista de elementos multiplicados por el factor
+       */
+      function mutiplicaPorFactor(numeros, factorMultiplicador) {
+        // el map sirve para transformar los elementos de un arreglo
+        var elementosMultiplicados = numeros.map(function (elemento) {
+          return elemento * factorMultiplicador;
+        });
+        return elementosMultiplicados;
+      }
+
+      console.group("EN 1");
+      console.log(
+        "elementos x 28",
+        mutiplicaPorFactor(elementos, FACTOR_MULTIPLICADOR_1)
+      );
+      console.groupEnd();
+
+      console.group("EN 2");
+      console.log(
+        "elementos x 82",
+        mutiplicaPorFactor(elementos, FACTOR_MULTIPLICADOR_2)
+      );
+      console.groupEnd();
+    </script>
+  </body>
+</html>
