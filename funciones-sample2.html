@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones ejemplo 2</title>
+  </head>
+  <body>
+    <script>
+      // TODO: dada una lista de elementos numericos
+      // 1. A cada elemento de la lista multiplicarlo por 28(factor multiplicador)
+      // 2. A cada elemento de la lista multilicarlo por 89(factor multiplicador)
+      // 3. A cada elemento de la lista multilicarlo por 100(factor multiplicador)
+      /**
+       * @params numero Number Numero a multiplicar
+       * @params factorMultiplicador Number Factor multiplicador
+       * @returns numero multiplicado por el factor multiplicador
+       */
+      function multiplicaPorFactor(numero, factorMultiplicador) {
+        return numero * factorMultiplicador;
+      }
+
+      /**
+       * @params numeros Array(Number) Numeros a multiplicar por factor
+       * @params factorMultiplicador Number factor multiplicador
+       */
+      function multiplicaPorFactorLista(numeros, factorMultiplicador) {
+        var numerosMultiplicados = [];
+        for (var i = 0; i < numeros.length; i++) {
+          // multiplca el numero en la posicion [i] por el factor usando la funcion 'multiplicaPorFactor';
+
+          var numeroMultiplicado = multiplicaPorFactor(
+            numeros[i],
+            factorMultiplicador
+          );
+          numerosMultiplicados.push(numeroMultiplicado);
+        }
+        return numerosMultiplicados;
+      }
+
+      var elementos = [1, 90, 2, 5, 7, 0];
+      var FACTOR_MULTIPLICADOR_1 = 28;
+      var FACTOR_MULTIPLICADOR_2 = 89;
+      var FACTOR_MULTIPLICADOR_3 = 100;
+
+      console.group("EN 1");
+      console.log(
+        "numeros multiplicados por 28",
+        multiplicaPorFactorLista(elementos, FACTOR_MULTIPLICADOR_1)
+      );
+      console.groupEnd();
+
+      console.group("EN 2");
+      console.log(
+        "numeros multiplcados por 89",
+        multiplicaPorFactorLista(elementos, FACTOR_MULTIPLICADOR_2)
+      );
+      console.groupEnd();
+
+      console.group("EN 3");
+      console.log(
+        "numeros multiplcados por 100",
+        multiplicaPorFactorLista(elementos, FACTOR_MULTIPLICADOR_3)
+      );
+      console.groupEnd();
+    </script>
+  </body>
+</html>
