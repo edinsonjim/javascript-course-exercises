@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reduce ejemplos</title>
+  </head>
+  <body>
+    <script>
+      // TODO: ejemplos con reduce para arreglos
+      // reduce: sirve para transformar un arreglo en lo que sea.()
+      // pudes transformarlo en arreglo, objects, diccionarios.
+      // 1. transformar cada elemento de la lista en string y como unico array
+      //    [1, 2, "A"] => "12A"
+      //    [3, 4, "B"] => "34B"
+      // resultado final: un arreglo con 3 elementos
+      //      => ["12A", "34B", "46C"]
+      //
+      var elementos = [
+        [1, 2, "A"],
+        [3, 4, "B"],
+        [5, 6, "C"],
+        [7, 8, "D"],
+      ];
+
+      var resultado = elementos.reduce(function (
+        elementoAcumulador,
+        elementoActual
+      ) {
+        // console.log("elementoAcumulador", elementoAcumulador);
+        // console.log("elementoActual", elementoActual);
+
+        var plainArray = elementoActual.join(",");
+        // console.log("plainArray", plainArray);
+        elementoAcumulador.push(plainArray);
+
+        return elementoAcumulador;
+      },
+      []); // IMPORTAR: inicializamos el reduce con un arreglo vacio ([])
+
+      console.log("resultado final", resultado);
+    </script>
+  </body>
+</html>
