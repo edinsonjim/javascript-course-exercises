@@ -28,12 +28,14 @@
         var numerosMultiplicados = [];
         for (var i = 0; i < numeros.length; i++) {
           // multiplca el numero en la posicion [i] por el factor usando la funcion 'multiplicaPorFactor';
-
           var numeroMultiplicado = multiplicaPorFactor(
             numeros[i],
             factorMultiplicador
           );
           numerosMultiplicados.push(numeroMultiplicado);
+
+          // puedes agregar directamente el resultado de la funcion sin crear una variable como la linea 31.
+          // numerosMultiplicados.push(multiplicaPorFactor(numeros[i], factorMultiplicador));
         }
         return numerosMultiplicados;
       }

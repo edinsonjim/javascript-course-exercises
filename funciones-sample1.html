@@ -24,6 +24,11 @@
       var listaNumeros2 = [40, 10, 5, 20, 89, 890, 190, 220, 210];
       var listaNumeros3 = [4, 5, 1, 90, 10];
 
+      // accedere a las posiciones de una lsita
+      // var ultimoEnLista = numeros[numeros.length - 1];
+      // var segundoNumero = numeros[1];
+      // var terceroNumero = numeros[2];
+
       /**
        * Devuelve el numero mayor de la lista ingreesada.
        * @params numeros lista de numeros
@@ -31,6 +36,8 @@
        */
       function obtenerMayorEnLista(numeros) {
         var ultimoNumeroMayor = 0;
+
+        // Math.max()
         for (i = 0; i < numeros.length; i++) {
           if (ultimoNumeroMayor < numeros[i]) {
             ultimoNumeroMayor = numeros[i];
@@ -45,7 +52,11 @@
        * @returns el numero menor de la lista
        */
       function obtenerMenorEnLista(numeros) {
+        // return Math.min(numeros)
+
+        // definimos el primero en la lista.
         var ultimoNumeroMenor = numeros[0];
+
         for (i = 0; i < numeros.length; i++) {
           if (ultimoNumeroMenor > numeros[i]) {
             ultimoNumeroMenor = numeros[i];
@@ -61,6 +72,7 @@
       function obtenerPromedioLista(numeros) {
         var promedio = 0;
         var sumaTotal = 0;
+        // Math.avg() -> buscar si es cierto.
         for (i = 0; i < numeros.length; i++) {
           sumaTotal = sumaTotal + numeros[i];
         }
