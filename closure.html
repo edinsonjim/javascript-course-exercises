@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clousure</title>
+  </head>
+  <body>
+    <script>
+      // Funciones anonimas, no tienen un nombre definido
+      //    function(...params) {}
+      // Funcion no anonima
+      //    function nombreFuncion(...params) {}
+      //
+      // CLOSURES:
+      // funciones dentro de funciones
+      // como si fueran capas de funciones.
+      // casi como el concepto de 'middleware'
+      //   - las capas superiores NO pueden acceder a los datos de las capas inferiores
+      //   - las capas inferiores SI pueden accedere a los datos de las capas superiores.
+      //   - las capas internas no se puede invocar/llamar desde el exterior.
+
+      var funcion1 = function (numero) {
+        var letraEnCapaSuperior = "AAAA";
+
+        var funcionInterna = function (letras) {
+          var numero2 = 2;
+          console.log("[funcionInterna] numero", numero);
+          console.log("[funcionInterna] numero2", numero2);
+          console.log("[funcionInterna] letras", letras);
+          console.log(
+            "[funcionInterna] letraEnCapaSuperior",
+            letraEnCapaSuperior
+          );
+
+          var funcioneSubInter = function (params) {
+            console.log("[funcioneSubInter] params", params);
+          };
+
+          funcioneSubInter([]);
+        };
+
+        console.log("[funcion1] numero", numero);
+        // console.log("[funcion1] numero2", numero2);
+
+        funcionInterna(["a", "b", "c"]);
+      };
+
+      funcion1(1);
+    </script>
+  </body>
+</html>
