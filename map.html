@@ -14,6 +14,7 @@
       // 1. Cada elemento de la lista multiplicar por 82(factor multiplicador);
 
       var elementos = [0, 1, 9, 7, 4, 2];
+      var elementos2 = [0, 1, 9, 7, 4, 2];
       var FACTOR_MULTIPLICADOR_1 = 28;
       var FACTOR_MULTIPLICADOR_2 = 82;
 
@@ -24,9 +25,14 @@
        */
       function mutiplicaPorFactor(numeros, factorMultiplicador) {
         // el map sirve para transformar los elementos de un arreglo
-        var elementosMultiplicados = numeros.map(function (elemento) {
-          return elemento * factorMultiplicador;
+        var elementosMultiplicados = numeros.map(function (elemento, indice) {
+          if (indice % 2 === 0) {
+            return elemento * factorMultiplicador;
+          }
+
+          return elemento + factorMultiplicador;
         });
+
         return elementosMultiplicados;
       }
 
@@ -39,8 +45,8 @@
 
       console.group("EN 2");
       console.log(
-        "elementos x 82",
-        mutiplicaPorFactor(elementos, FACTOR_MULTIPLICADOR_2)
+        "elementos2 x 82",
+        mutiplicaPorFactor(elementos2, FACTOR_MULTIPLICADOR_2)
       );
       console.groupEnd();
     </script>
