@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reduce sample 2</title>
+  </head>
+  <body>
+    <script>
+      // TODO: REDUCE
+      // |matriz>
+      // |0|1|2|3|4
+      // |5|6|7|8|9
+      //
+      // matriz[0][3] => 3
+      // matriz[1][3] => 9
+
+      var matriz = [
+        [1, 2, 3, 4],
+        [4, 5, 6, 7, 8],
+        [10, 11, 12],
+      ];
+
+      // var sumaTotal = 0;
+      // for (var i = 0; i < matriz.length; i++) {
+      //   console.log("matriz[i]", matriz[i]);
+      //   for (var j = 0; j < matriz[i].length; j++) {
+      //     console.log("matriz[i][j]", matriz[i][j]);
+      //     sumaTotal = sumaTotal + matriz[i][j];
+      //   }
+      // }
+
+      var sumTotalMatriz = matriz.reduce(function (acumuladorMatriz, fila) {
+        // console.log('acumulador', acumulador);
+        console.log("fila", fila);
+
+        var totalFila = fila.reduce(function (acculadorFilas, elemento) {
+          console.log("elemento", elemento);
+          acculadorFilas = acculadorFilas + elemento;
+
+          return acculadorFilas;
+        }, 0); // inicializamos con 0 para sumar/acumular
+
+        console.log("totalFila", totalFila);
+
+        acumuladorMatriz = acumuladorMatriz + totalFila;
+
+        return acumuladorMatriz;
+      }, 0); // inicializamos con 0 para sumar/acumular
+
+      console.log("el total de la mtraiz es: ", sumTotalMatriz);
+    </script>
+  </body>
+</html>
