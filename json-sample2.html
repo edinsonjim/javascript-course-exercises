@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Ejemplo2</title>
+  </head>
+  <body>
+    <script>
+      // TODO:
+      // arbol genealogico de una familia
+      // hijo -> padres -> hijos, nietos, abuelos, bisabuelos
+      var persona1 = {
+        id: "M1",
+        nombre: "Maria",
+        apellidos: "Correa",
+        padres: [],
+        hijos: [],
+        totalAhorrado: 0,
+        nroHijos: function () {
+          return this.hijos.length;
+        },
+        castigarHijos: function () {
+          this.hijos.forEach(function (hijo) {
+            console.log("castigando a " + hijo.nombre + " " + hijo.apellidos);
+          });
+        },
+        ahorrar: function (monto) {
+          this.totalAhorrado = this.totalAhorrado + monto;
+        },
+        pagar: function (monto, persona) {
+          if (monto <= this.totalAhorrado) {
+            this.totalAhorrado = this.totalAhorrado - monto;
+            persona.ahorrar(monto);
+            console.log(
+              "Pago realizado a " +
+                persona.nombre +
+                " " +
+                persona.apellidos +
+                " de " +
+                monto
+            );
+          } else {
+            console.error(
+              "No tengo para pagar, solo tengo " + this.totalAhorrado
+            );
+          }
+        },
+      };
+
+      var persona2 = {
+        id: "M2",
+        nombre: "Pablo",
+        apellidos: "Correa",
+        padres: [],
+        hijos: [],
+        totalAhorrado: 0,
+        getFullName: function () {
+          return this.nombre + " " + this.apellidos;
+        },
+        nroHijos: function () {
+          return this.hijos.length;
+        },
+        castigarHijos: function () {
+          this.hijos.forEach(function (hijo) {
+            // console.log("castigando a " + hijo.nombre + " " + hijo.apellidos);
+            console.log("castigando a " + hijo.getFullName());
+          });
+        },
+        ahorrar: function (monto) {
+          this.totalAhorrado = this.totalAhorrado + monto;
+        },
+        pagar: function (monto, persona) {
+          if (monto <= this.totalAhorrado) {
+            this.totalAhorrado = this.totalAhorrado - monto;
+            persona.ahorrar(monto);
+            console.log(
+              "Pago realizado a " + persona.getFullName() + " de " + monto
+            );
+          } else {
+            console.error(
+              "No tengo para pagar, solo tengo " + this.totalAhorrado
+            );
+          }
+        },
+      };
+
+      var persona3 = {
+        id: "M3",
+        nombre: "Yamilet",
+        apellidos: "Correa",
+        padres: [],
+        hijos: [],
+        totalAhorrado: 0,
+        getFullName: function () {
+          return this.nombre + " " + this.apellidos;
+        },
+        nroHijos: function () {
+          return this.hijos.length;
+        },
+        castigarHijos: function () {
+          this.hijos.forEach(function (hijo) {
+            console.log("castigando a " + hijo.nombre + " " + hijo.apellidos);
+          });
+        },
+        ahorrar: function (monto) {
+          this.totalAhorrado = this.totalAhorrado + monto;
+        },
+        pagar: function (monto, persona) {
+          if (monto <= this.totalAhorrado) {
+            this.totalAhorrado = this.totalAhorrado - monto;
+            persona.ahorrar(monto);
+            console.log(
+              "Pago realizado a " +
+                persona.nombre +
+                " " +
+                persona.apellidos +
+                " de " +
+                monto
+            );
+          } else {
+            console.error(
+              "No tengo para pagar, solo tengo " + this.totalAhorrado
+            );
+          }
+        },
+      };
+
+      var persona4 = {
+        id: "M4",
+        nombre: "Marco",
+        apellidos: "Correa",
+        padres: [],
+        hijos: [],
+        totalAhorrado: 0,
+        getFullName: function () {
+          return this.nombre + " " + this.apellidos;
+        },
+        nroHijos: function () {
+          return this.hijos.length;
+        },
+        castigarHijos: function () {
+          this.hijos.forEach(function (hijo) {
+            console.log("castigando a " + hijo.nombre + " " + hijo.apellidos);
+          });
+        },
+        ahorrar: function (monto) {
+          this.totalAhorrado = this.totalAhorrado + monto;
+        },
+        pagar: function (monto, persona) {
+          if (monto <= this.totalAhorrado) {
+            this.totalAhorrado = this.totalAhorrado - monto;
+            persona.ahorrar(monto);
+            console.log(
+              "Pago realizado a " +
+                persona.nombre +
+                " " +
+                persona.apellidos +
+                " de " +
+                monto
+            );
+          } else {
+            console.error(
+              "No tengo para pagar, solo tengo " + this.totalAhorrado
+            );
+          }
+        },
+      };
+
+      // operacions
+      persona1.padres.push(persona2);
+      persona1.hijos.push(persona3);
+      persona1.hijos.push(persona4);
+
+      persona2.hijos.push(persona1);
+
+      persona3.padres.push(persona1);
+
+      persona4.padres.push(persona1);
+
+      console.group("PERSONA1");
+      persona1.castigarHijos();
+
+      // Ingresos
+      persona1.ahorrar(90);
+      persona1.ahorrar(10);
+      persona1.ahorrar(20);
+
+      // gasstos/pagos
+      persona1.pagar(10000, persona2);
+      persona1.pagar(100, persona2);
+      persona1.pagar(10, persona3);
+
+      console.log(persona1);
+      console.groupEnd();
+
+      console.group("PERSONA2");
+      persona2.ahorrar(5);
+      console.log(persona2);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
