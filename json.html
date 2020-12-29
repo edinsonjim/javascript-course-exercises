@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <script>
+      // JSON: JavaScript Object Notation
+      // se define: '{}' -> diccionarios
+      /*
+    ejemplo de JSON:
+    {
+      nombre: "Akemi",
+      edad: 29,
+      enVida: true,
+      partesCuerpo: ["brazos", "cuello", "piernas", ...],
+      padres: [
+        {
+          nombre: "Papa nombre",
+          apellido: "Papa apellido",
+          edad: 48
+        },
+        {
+          nombre: "Mama nombre",
+          apellido: "Mama apellido",
+          edad: 48,
+          direccion: {
+            via: "via del perdido",
+            numero: 10
+          }
+        },
+      ],
+      direccion: {
+        via: "Via donde estamos",
+        numero: 10,
+        pais: {
+          codigo: "PE",
+          nombre: "Peru"
+        }
+      },
+      decirHola: function() { ... }
+    }
+    */
+      // tipo 'object' simple.
+      var personaObjeto = {
+        nombre: "Akemi",
+        edad: 29,
+        partes: ["brazos", "pirneras"],
+        direccion: {
+          via: "alguna via",
+          numero: 10,
+          pais: {
+            codigo: "PE",
+            nombre: "PERU",
+          },
+          departamento: {
+            codigo: "076",
+            nombre: "Cajamarca",
+          },
+        },
+        decirHola: function () {
+          // this: te permite accedere a las propiedades del objeto.
+          console.log("Holla, yo soy", this.nombre);
+          console.log("mi edad es", this.edad);
+          console.log("mi direccion es", this.direccion);
+          console.log("mi pais es", this.direccion.pais.nombre);
+          console.log("mi departamento es", this.direccion.departamento.nombre);
+        },
+        llamar: function () {
+          console.log("Llamando a alguien");
+        },
+      };
+      // console.log(miJSON);
+      // Invocando la funcion 'decirHola'
+      personaObjeto.decirHola();
+      personaObjeto.llamar();
+
+      // Para saber el tipo de objeto
+      console.log("tipo de objeto", typeof personaObjeto);
+    </script>
+  </body>
+</html>
