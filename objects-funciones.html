@@ -9,10 +9,31 @@
     <script>
       // Regla: en una funcion debe aceptar maximo 5 parametros
 
-      function Empresa(razonSocial, RUC) {
+      function Empresa(razonSocial, ruc) {
         this.RazonSocial = razonSocial;
-        this.RUC = RUC;
-        this.InversionTotal = 0;
+        this.RUC = ruc;
+
+        this.Inversion = 0;
+        this.TipoMoneda = "$"; // Por defecto dolares
+
+        this.Socios = null;
+
+        this.Empleados = [];
+
+        this.DefinirInversion = function (montoInversion) {
+          this.Inversion += montoInversion; // otro modo de escribir: this.Inversion = this.Inversion + montoInversion;
+        };
+
+        this.ContratarEmpleado = function (empleado) {
+          this.Empleados.push(empleado);
+        };
+
+        this.PagarSueldoEmpleados = function () {
+          this.Empleados.forEach(function (empleado) {
+            var montoAPagar = empleado.Salario;
+            empleado.RecibirSueldo(montoAPagar);
+          });
+        };
       }
 
       function Persona(nombre, apellidos) {
@@ -20,20 +41,47 @@
         this.Apellidos = apellidos;
         this.Edad = null;
 
-        this.Ahorros = 0;
-
         this.FullName = function () {
           return this.Nombre + " " + this.Apellidos;
         };
       }
 
-      function Mascota() {}
+      // Herencias en JavaScript
+      function Empleado(nombre, apellidos, salario) {
+        Persona.call(this, nombre, apellidos); // Empleado hereda los atributos de Persona.
+
+        this.Salario = salario;
+        this.CuentaSalarial = 0;
+
+        this.RecibirSueldo = function (sueldo) {
+          this.CuentaSalarial += sueldo;
+        };
+      }
 
       // para crear una instancia de un funcion/objeto es necesario
       // usar la palabra 'new'
+
+      var empleado1 = new Empleado("Jose", "Quinones", 800);
+      var empleado2 = new Empleado("Maria", "Perez", 1200);
+
+      var IBM = new Empresa("IBM", "8989889889");
+
+      console.group("IBM");
+      console.log(IBM);
+      IBM.DefinirInversion(9000);
+      IBM.ContratarEmpleado(empleado1);
+      IBM.ContratarEmpleado(empleado2);
+      IBM.PagarSueldoEmpleados();
+      console.groupEnd();
+
       var personaA = new Persona("Maria", "Correa");
       var personaB = new Persona("Pepe", "Rojas");
       var personaC = new Persona("Elias", "Rojas");
+
+      console.group("empleado1");
+      console.log(empleado1);
+
+      console.groupEnd();
 
       console.group("A");
       console.log(personaA);
@@ -53,7 +101,6 @@
       console.groupEnd();
 
       console.log("es una instancia de Persona?", personaA instanceof Persona);
-      console.log("es una instancia de Mascota?", personaA instanceof Mascota);
     </script>
   </body>
 </html>
