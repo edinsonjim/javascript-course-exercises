@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>foreach</title>
+  </head>
+  <body>
+    <script>
+      // foreach: permite recorrer un arreglo, elemento por elemento
+
+      var elementos = ["A", "B", "Z", "X"];
+
+      console.log("CON FOREACH");
+      elementos.forEach(function (elemento, indice) {
+        console.log("elemento,indice", elemento, indice);
+      });
+      console.log("CON FOR");
+      for (var i = 0; i < elementos.length; i++) {
+        console.log("elemento,indice", elementos[i], i);
+      }
+    </script>
+  </body>
+</html>
