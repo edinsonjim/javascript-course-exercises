@@ -54,12 +54,11 @@
       function obtenerMenorEnLista(numeros) {
         // return Math.min(numeros)
 
-        // definimos el primero en la lista.
-        var ultimoNumeroMenor = numeros[0];
+        var ultimoNumeroMenor = numeros[0]; // obtenemos el primer elemento de la lista.
 
         for (i = 0; i < numeros.length; i++) {
           if (ultimoNumeroMenor > numeros[i]) {
-            ultimoNumeroMenor = numeros[i];
+            ultimoNumeroMenor = numeros[i]; // sobreescribe/reasigna el valor en la variable 'ultimoNumeroMenor'.
           }
         }
         return ultimoNumeroMenor;
