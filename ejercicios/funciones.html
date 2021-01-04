@@ -16,7 +16,18 @@
       //   4. La cantidad de edades menores de 10
       //   5. Obtener el promedio de la lista de edades.
       //   6. Obtener la suma de la lista de edades.
-      var edades = [
+      function edadesMayoresCantidadB(edades, edadAComparar) {
+        var cantidadEdadesMayores = 0;
+
+        for (var i = 0; i < edades.length; i++) {
+          if (edades[i] < edadAComparar) {
+            cantidadEdadesMayores++;
+          }
+        }
+        return cantidadEdadesMayores;
+      }
+
+      var conejosEdades = [
         18,
         18,
         20,
@@ -35,6 +46,17 @@
         5,
         10,
       ];
+
+      var edadAComparar18 = 18;
+      var edadAComparar60 = 60;
+      var edadAComparar15 = 15;
+      var edadAComparar10 = 10;
+
+      var mayores18 = edadesMayoresCantidadB(conejosEdades, edadAComparar18);
+      var mayoresA60 = edadesMayoresCantidadB(conejosEdades, edadAComparar60);
+
+      console.log("Mayores a 18", mayores18);
+      console.log("mayores a 60", mayoresA60);
     </script>
   </body>
 </html>
