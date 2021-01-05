@@ -35,6 +35,86 @@
         5,
         10,
       ];
+
+      var edadAComparar1 = 18;
+      var edadAComparar2 = 60;
+      var edadAComparar3 = 15;
+      var edadAComparar4 = 10;
+
+      function edadesMayoresCantidadA(edades, edadAComparar) {
+        var cantidadEdadesMayores = 0;
+        for (var i = 0; i < edades.length; i++) {
+          if (edades[i] > edadAComparar) {
+            cantidadEdadesMayores++;
+          }
+        }
+        return cantidadEdadesMayores;
+      }
+
+      function edadesMenoresCantidadB(edades, edadAComparar) {
+        var cantidadEdadesMenores = 0;
+        for (var i = 0; i < edades.length; i++) {
+          if (edades[i] < edadAComparar) {
+            cantidadEdadesMenores++;
+          }
+        }
+        return cantidadEdadesMenores;
+      }
+
+      function edadesMayoresLista(edades, edadAComparar) {
+        var lista = [];
+        for (var i = 0; i < edades.length; i++) {
+          if (edades[i] > edadAComparar) {
+            lista.push(edades[i]);
+          }
+        }
+        return lista;
+      }
+
+      function edadesMenoresLista(edades, edadAComparar) {
+        var lista = [];
+        for (var i = 0; i < edades.length; i++) {
+          if (edades[i] < edadAComparar) {
+            lista.push(edades[i]);
+          }
+        }
+        return lista;
+      }
+
+      function promedioEdades(edades) {
+        var sumaTotal = 0;
+        var promedio = 0;
+        for (var i = 0; i < edades.length; i++) {
+          sumaTotal += edades[i];
+        }
+        promedio = sumaTotal / edades.length;
+        return promedio;
+      }
+
+      function sumaEdades(edades) {
+        var sumaTotal = 0;
+        for (var i = 0; i < edades.length; i++) {
+          sumaTotal += edades[i];
+        }
+        return sumaTotal;
+      }
+
+      console.log(
+        "Cantidad de mayores: ",
+        edadesMayoresCantidadA(edades, edadAComparar1)
+      );
+      console.log(
+        "Cantidad de menores: ",
+        edadesMenoresCantidadB(edades, edadAComparar2)
+      );
+      console.log(
+        "Lista de mayores: ",
+        edadesMayoresLista(edades, edadAComparar1)
+      );
+      console.log(
+        "Lista de menores: ",
+        edadesMenoresLista(edades, edadAComparar4)
+      );
     </script>
   </body>
 </html>
