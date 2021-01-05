@@ -39,6 +39,74 @@
         ["A", "K", "E", "M", 11, 90],
         "I",
       ];
+
+      function separarLosNumeros(elementos) {
+        var lista = [];
+        for (var i = 0; i < elementos.length; i++) {
+          if (typeof elementos[i] === "number") {
+            lista.push(elementos[i]);
+          }
+        }
+        return lista;
+      }
+
+      function cantidadDeNumeros(elementos) {
+        var cantidadNumeros = 0;
+        elementos.forEach((elemento) => {
+          if (typeof elemento === "number") {
+            cantidadNumeros++;
+          }
+        });
+        return cantidadNumeros;
+      }
+
+      function separarLasLetras(elementos) {
+        var lista = [];
+        for (var i = 0; i < elementos.length; i++) {
+          if (typeof elementos[i] === "string") {
+            lista.push(elementos[i]);
+          }
+        }
+        return lista;
+      }
+
+      function cantidadDeLetras(elementos) {
+        var cantidadLetras = 0;
+        elementos.forEach((elemento) => {
+          if (typeof elemento === "string") {
+            cantidadLetras++;
+          }
+        });
+        return cantidadLetras;
+      }
+      function separarLosArreglos(elementos) {
+        var lista = [];
+        for (var i = 0; i < elementos.length; i++) {
+          if (Array.isArray(elementos[i])) {
+            lista.push(elementos[i]);
+          }
+        }
+        return lista;
+      }
+
+      function cantidadDeArreglos(elementos) {
+        var cantidadArreglos = 0;
+        elementos.forEach((elemento) => {
+          if (Array.isArray(elemento)) {
+            cantidadArreglos++;
+          }
+        });
+        return cantidadArreglos;
+      }
+      console.log("Números: ", separarLosNumeros(elementosMezcla));
+      console.log("Cantidad de números: ", cantidadDeNumeros(elementosMezcla));
+      console.log("Letras: ", separarLasLetras(elementosMezcla));
+      console.log("Cantidad de letras: ", cantidadDeLetras(elementosMezcla));
+      console.log("Arreglo: ", separarLosArreglos(elementosMezcla));
+      console.log(
+        "Cantidad de arreglos: ",
+        cantidadDeArreglos(elementosMezcla)
+      );
     </script>
   </body>
 </html>
