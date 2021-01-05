@@ -98,8 +98,38 @@
         });
         return cantidadArreglos;
       }
+
+      function extraerArreglo(elementos) {
+        var accumuladorArreglos = [];
+        for (var i = 0; i < elementos.length; i++) {
+          if (Array.isArray(elementos[i])) {
+            // []
+            // [] = [].concat([1, 2, 3]) => [1, 2, 3]
+            // [1, 2, 3] = [1, 2, 3].concat(['a', 'z']) => [1, 2, 3, 'a', 'z']
+            accumuladorArreglos = accumuladorArreglos.concat(elementos[i]);
+          }
+        }
+        return accumuladorArreglos;
+      }
+
+      function extraerArregloB(elementos) {
+        // este primer return es para la funcion.
+        return elementos.reduce((accumulador, elemento) => {
+          if (Array.isArray(elemento)) {
+            accumulador = accumulador.concat(elemento);
+          }
+
+          // este return es para el reduce.
+          return accumulador;
+        }, []); // IMPORTANTE: lo inicializamos con un arreglo vacio []
+      }
+
       console.log("Números: ", separarLosNumeros(elementosMezcla));
       console.log("Cantidad de números: ", cantidadDeNumeros(elementosMezcla));
+
+      var soloNumerosLista = separarLosNumeros(elementosMezcla);
+      console.log("Cantidad de números B: ", soloNumerosLista.length);
+
       console.log("Letras: ", separarLasLetras(elementosMezcla));
       console.log("Cantidad de letras: ", cantidadDeLetras(elementosMezcla));
       console.log("Arreglo: ", separarLosArreglos(elementosMezcla));
@@ -107,6 +137,8 @@
         "Cantidad de arreglos: ",
         cantidadDeArreglos(elementosMezcla)
       );
+      console.log("Arreglos extraidos", extraerArreglo(elementosMezcla));
+      console.log("Arreglos extraidos-B", extraerArregloB(elementosMezcla));
     </script>
   </body>
 </html>
