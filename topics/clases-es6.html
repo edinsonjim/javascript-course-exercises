@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clases ES6</title>
+  </head>
+  <body>
+    <script>
+      // TODO: Clases en ES6
+      // ES6 -> solo puedes tener un unico constructor
+      //
+      // Para usar una variable de una clase usamos el operador 'this'
+      //
+      // ES9 -> para crear variables privadas usamos el '#'
+      // GETTER -> usamos get <nombre-metodo>
+      // SETTER -> usamos set <nombre-metodo>
+      // metodos/atributo staticos: metodos que puedes acceder sin la necesidad de crear una instancia.
+
+      class Perfil {
+        #username = null;
+        #nombre = null;
+        #apellidos = null;
+        correo = null;
+        #seguidores = [];
+        #seguidos = [];
+        #publicaciones = [];
+
+        constructor() {}
+
+        set username(username) {
+          if (!username) {
+            throw new Error("Username no valido");
+          }
+
+          if (username.length < 3) {
+            throw new Error("Username minimo debe ser de 3 caracteres");
+          }
+
+          this.#username = username;
+        }
+
+        get username() {
+          return this.#username;
+        }
+
+        set nombre(nombre) {
+          if (!nombre) {
+            throw new Error("Nombre no es valido");
+          }
+
+          this.#nombre = nombre;
+        }
+
+        get nombre() {
+          return this.#nombre;
+        }
+
+        set apellidos(apellidos) {
+          this.#apellidos = apellidos;
+        }
+
+        get apellidos() {
+          return this.#apellidos;
+        }
+
+        getFullName() {
+          return this.#nombre + " " + this.#apellidos;
+        }
+      }
+
+      var alfPerfil = new Perfil();
+      alfPerfil.nombre = "Alf";
+      alfPerfil.apellidos = "Navegante";
+
+      console.log("Fullname", alfPerfil.getFullName());
+      console.log("perfil", alfPerfil);
+    </script>
+  </body>
+</html>
