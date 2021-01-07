@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funciones de clase</title>
+  </head>
+  <body>
+    <script>
+      // TODO: Operaciones para instagram
+      // seguidores, propio perfil, seguidos, publicaciones
+
+      // Clases con JavaScript PURO antes que exista ES5 a mas
+      // ES5 -> EcmaScript:5 es la version
+      // actualmente estamos en la version 9 de EcmaScript
+      // EcmsScript es un estandar de metodos/funciones en JavaScript.
+
+      // NOTA:
+      // Programacion Orientada a Objectos principios:
+      // 1. Polimorfismo -> utilizar varios metodos con el mismo nombre.
+      // 2. Encapsulamiento -> proteger las variables/parametros del exterior (this.)
+      // 3. Principio de ocultacion: permite colocar los atributos/metodos de la clase como privados/publicos...
+
+      // NOTA:
+      // - Con Javascript(JS) solo tienes un unico constructor -> Polimorfismo no existe en JavaScript
+      // - Por nomemclatura en JS se utiliza "_" para los atributos privados
+      // - GETTER: permite obtner el valor de una variable privada(puedes aplicar decoradores y mas).
+      // - SETTER: permite almacer el valor en una variable privada(puedes aplicar validaciones y mas)
+      // - Las atributos de una clase estan definidos como this.<nombre variable>
+      // - Los datos usados como parametros en el constructor son los obligatorios para crear el objeto.
+      // - Las funciones al interno de una clase son metodos de clase.
+      // - Para definir un metodo/atributo como privado usamos "_" en futuras versiones se usa "#"
+      // if (nombre === null || nombre === undefined) {} ===> if (!!nombre) {}
+      // !! -> parse a boolean cualquier valor ->
+      //   ejemplo:
+      //      !!"" => false
+      //      !!1 => true
+      //      !!0 => false
+      //      !!{} => true
+      //      !!null => false
+      // operador al negativo: '!' => '!!!' -> if no existe el valor
+      //   ejemplo:
+      //    !"" => true
+
+      // Funcion de Clase Seguidor
+      function Seguidor(fecha, perfil) {
+        this.Fecha = fecha;
+        this.Perfil = perfil;
+      }
+
+      // Funcion de Clase Perfil
+      function Perfil() {
+        this._username = null;
+        this._nombre = null;
+        this._apellidos = null;
+        this.Correo = null;
+        this._seguidores = [];
+        this._publicaciones = [];
+
+        // Setter de username
+        this.SetUsername = function (username) {
+          if (!username) {
+            throw new Error("Username no valido");
+          }
+
+          if (username.length < 3) {
+            throw new Error("Username minimo debe ser de 3 caracteres");
+          }
+
+          this._username = username;
+        };
+
+        // Getter de username
+        this.GetUsername = function () {
+          return this._username;
+        };
+
+        this.SetNombre = function (nombre) {
+          if (!nombre) {
+            throw new Error("Nombre no es valido");
+          }
+
+          this._nombre = nombre;
+        };
+
+        this.SetApellidos = function (apellidos) {
+          this._apellidos = apellidos;
+        };
+        this.GetApellidos = function () {
+          return this._apellidos;
+        };
+
+        this.GetFullName = function () {
+          return this._nombre + " " + this._apellidos;
+        };
+
+        this.SeguirAPerfil = function (perfil) {
+          this._seguidores.push(new Seguidor(new Date(), perfil));
+        };
+        this.AddPublicacion = function (publicacion) {
+          this._publicaciones.push(publicacion);
+        };
+        this.GetPublicaciones = function () {
+          return this._publicaciones;
+        };
+      }
+
+      // Funcion de Clase Publicacion
+      function Publicacion(descripcion) {
+        this.Descripcion = descripcion;
+        this.Comentarios = [];
+        this.Likes = [];
+
+        this.Comentar = function (comentario) {
+          this.Comentarios = comentario;
+        };
+      }
+
+      function Comentario(perfil, descripcion) {
+        this.Descripcion = descripcion;
+        this.Perfil = perfil;
+      }
+
+      // --------------
+      console.group("Perfil");
+      var perfilPrincipal = new Perfil();
+      perfilPrincipal.SetUsername("alf-nav");
+      perfilPrincipal.SetNombre("Alf");
+      perfilPrincipal.SetApellidos("Navegante");
+      perfilPrincipal.Correo = "alf@navegante.com";
+      perfilPrincipal.AddPublicacion(new Publicacion("Mi primera publicacion"));
+      perfilPrincipal.AddPublicacion(new Publicacion("Mi segunda publicacion"));
+
+      var perfilMaria = new Perfil();
+      perfilMaria.SetUsername("malena");
+      perfilMaria.SetNombre("Maria");
+      perfilMaria.SetApellidos("Magdalena");
+
+      console.log("perfil de: ", perfilPrincipal.GetFullName());
+      perfilPrincipal.SeguirAPerfil(perfilMaria);
+
+      // Agregar comentarios a la primera publicacion
+      perfilPrincipal
+        .GetPublicaciones()[0]
+        .Comentar(new Comentario(perfilMaria, "Todo bonito!"));
+
+      console.log({ perfilPrincipal });
+      console.groupEnd();
+    </script>
+  </body>
+</html>
