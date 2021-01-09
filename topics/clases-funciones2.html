@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Persona(nombre) {
+        this.Nombre = nombre;
+        this.Salario = 0;
+
+        this.Compras = [];
+
+        // Lista para almacenar instancias de la clase 'TarjetaCredito'
+        this.TarjetasCredito = [];
+
+        // el parametro 'tarjeta' deberia ser una instancia de 'TarjetaCredito'
+        this.AsociarTarjeta = function (tarjeta) {
+          this.TarjetasCredito.push(tarjeta);
+        };
+
+        // producto tiene q ser una instancia de la clase 'Producto'
+        this.ComprarProducto = function (producto) {
+          // 1. Para compara primero necesitamos saber si tenemos dinero
+          // 2. Pagar por el producto
+          // 3. Lo llevamos a casa.
+          // var totalDineroEnTarjetas = 0;
+          // this.TarjetasCredito.forEach((tarjetaCredito) => {
+          //   totalDineroEnTarjetas += tarjetaCredito.LineaCredito;
+          // });
+
+          // verificar si puedo pagar el precio del producto
+          var puedoPagarElProducto = false;
+          this.TarjetasCredito.forEach((tarjetaCredito) => {
+            if (tarjetaCredito.LineaCredito >= producto.Precio) {
+              puedoPagarElProducto = true;
+            }
+          });
+
+          // Aplicamos el pago con alguna de las tarjetas que tenga todo el precio.
+          // formato full: if (puedoPagarElProducto === true)
+          if (puedoPagarElProducto) {
+            var productoYaPagado = false;
+            this.TarjetasCredito.forEach((tarjetaCredito) => {
+              if (
+                tarjetaCredito.LineaCredito >= producto.Precio &&
+                productoYaPagado === false
+              ) {
+                productoYaPagado = true;
+                tarjetaCredito.PagarCompra(producto.Precio);
+              }
+            });
+
+            this.Compras.push(producto);
+          } else {
+            console.error("No puedes pagar el producto", producto.Nombre);
+          }
+        };
+      }
+
+      function TarjetaCredito(numero) {
+        this.Numero = numero;
+        // Saldo disponible de la tarjeta
+        this.LineaCredito = 0;
+
+        // montoCompra debe ser un valor numerico
+        this.PagarCompra = function (montoCompra) {
+          if (typeof montoCompra !== "number") {
+            throw new Error("Monto compra deberia ser un valor numerico");
+          }
+
+          if (this.LineaCredito < montoCompra) {
+            throw new Error(
+              "No hay suficiente dinero para pagar ",
+              montoCompra
+            );
+          }
+
+          this.LineaCredito -= montoCompra; // this.LineaCredito = this.LineaCredito - montoCompra;
+        };
+      }
+
+      function Producto(nombre, precio) {
+        this.Nombre = nombre;
+        this.Precio = precio;
+      }
+
+      // Productos disponibles para comprar
+      var laptop = new Producto("Laptop ACER 90", 900);
+      var tv = new Producto("TV LG 4K", 500);
+      var camaSimple = new Producto("Cama 1 plaza", 80);
+      var camaMatrimonial = new Producto("Cama Matrimonial", 1200);
+      var lenceria1 = new Producto("Lenceria Roja Transparent", 20);
+      var lenceria2 = new Producto("Lenceria Blanca Transparent", 20);
+      var vibrador = new Producto("Vibrador Negro Big", 100);
+
+      // Aqui vamos almacernar personas
+      var personasStore = [];
+
+      // con new creamos una instancia de la clase(objeto)
+      // la instancia de la clase persona es un objeto persona.
+      var persona1 = new Persona("Akemi");
+      persona1.Salario = 2000;
+      persona1.AsociarTarjeta(new TarjetaCredito(11111));
+
+      var tarjeta2 = new TarjetaCredito(22222);
+      tarjeta2.LineaCredito = 1240;
+      persona1.AsociarTarjeta(tarjeta2);
+
+      // Realizando compras -> vamos de shooping!!!!
+      persona1.ComprarProducto(camaMatrimonial);
+      persona1.ComprarProducto(lenceria1);
+      persona1.ComprarProducto(lenceria2);
+      persona1.ComprarProducto(vibrador);
+
+      personasStore.push(persona1);
+
+      var persona2 = new Persona("Alf");
+      persona2.Salario = 1000;
+      personasStore.push(persona2);
+
+      var persona3 = new Persona("Marco");
+      persona3.Salario = 900;
+      personasStore.push(persona3);
+
+      // arrow/lambda function => function {} definida como => {}
+      personasStore.forEach(function (persona) {
+        console.group("Persona");
+        console.log("Nombre", persona.Nombre);
+        console.log("Salario", persona.Salario);
+        console.log("Tarjetas", persona.TarjetasCredito);
+        console.log("Compras", persona.Compras);
+        console.groupEnd();
+      });
+
+      // console.log("store-personas", personasStore);
+    </script>
+  </body>
+</html>
