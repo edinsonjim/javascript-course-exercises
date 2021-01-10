@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // TODO: Abstraccion de clases con ES5 en adelante.
+      // Banco -> Cajeros ATM -> Transaccion por cuenta
+      // Personas -> Cuentas de Banco -> Transacciones
+      class Banco {
+        #cajeros = [];
+        // Cuentas de ahorros generadas y entregas a clientes.
+        #cuentasAhorros = [];
+
+        constructor(nombre, capital) {
+          this.nombre = nombre;
+          this.capital = capital;
+        }
+
+        get cajeros() {
+          return this.#cajeros;
+        }
+
+        get cuentasAhorros() {
+          return this.#cuentasAhorros;
+        }
+
+        aperturarCuenta(cliente) {
+          var cuentaAhorros = new CuentaAhorros(
+            this.#generNroCuenta(),
+            cliente,
+            this // Hace referencia a la misma clase 'Banco'
+          );
+          this.#cuentasAhorros.push(cuentaAhorros);
+          cliente.registarCuentaAperturada(cuentaAhorros);
+        }
+
+        instalarCajero(lat, long, fondoCajero) {
+          // verificar que exista el fondo el banco.
+          if (this.capital < fondoCajero) {
+            throw new Error("No hay fondos suficientes para el cajero");
+          }
+
+          this.#cajeros.push(
+            new Cajero(new Geolocalizacion(lat, long), fondoCajero)
+          );
+          this.capital -= fondoCajero;
+        }
+
+        // tipoOperacion RETIRO | DEPOSITO
+        registrarOperacion(tipoOperacion, nroCuenta, monto) {
+          if (tipoOperacion === "DEPOSITO") {
+            this.#cuentasAhorros.forEach((cuenta) => {
+              if (cuenta.nroCuenta === nroCuenta) {
+                cuenta.agregarFondos(monto);
+              }
+            });
+          } else {
+            throw new Error(
+              "Retiros aun no permitidos, disponible para la proxima version"
+            );
+          }
+        }
+
+        #generNroCuenta() {
+          return Math.random();
+        }
+      }
+
+      class Geolocalizacion {
+        constructor(lat, long) {
+          this.lat = lat;
+          this.long = long;
+        }
+      }
+
+      class Cajero {
+        /**
+         * @params Banco banco instancia de la clase 'Banco'
+         */
+        constructor(ubicacion, fondo) {
+          this.ubicacion = ubicacion;
+          this.fondo = fondo;
+        }
+      }
+
+      class Persona {
+        constructor(nombre, apellidos) {
+          this.nombre = nombre;
+          this.apellidos = apellidos;
+        }
+
+        getFullName() {
+          // string template:
+          // te permite generar un template de un string
+          // definido con ``
+          // return this.nombre + " " + this.apellidos;
+          return `${this.nombre} ${this.apellidos}`;
+        }
+      }
+
+      class CuentaAhorros {
+        #fondos = 0;
+
+        constructor(nroCuenta, persona, banco) {
+          this.banco = banco;
+          this.persona = persona;
+          this.nroCuenta = nroCuenta;
+        }
+
+        get fondos() {
+          return this.#fondos;
+        }
+
+        agregarFondos(monto) {
+          this.#fondos += monto;
+        }
+      }
+
+      class Cliente extends Persona {
+        #cuentasBancarias = [];
+
+        /**
+         * @params string nombre
+         * @params string apellidos
+         */
+        constructor(nombre, apellidos) {
+          super(nombre, apellidos);
+        }
+
+        get cuentasBancarias() {
+          return this.#cuentasBancarias;
+        }
+
+        /**
+         * @params CuentaAhorros cuentaAhorros
+         */
+        registarCuentaAperturada(cuentaAhorros) {
+          this.#cuentasBancarias.push(cuentaAhorros);
+        }
+
+        depositarEnCuenta(nroCuenta) {
+          var bancoAsociado = this.#obtenerBancoDeNroCuenta(nroCuenta);
+          // TODO: realizar mas operaciones para registra el diernoe en cuenta
+          // ...
+        }
+
+        #obtenerBancoDeNroCuenta(nroCuenta) {
+          var bancoEncontrado = null;
+          this.#cuentasBancarias.forEach((cuenta) => {
+            if (cuenta.nroCuenta === nroCuenta) {
+              bancoEncontrado = cuenta.banco;
+            }
+          });
+
+          return bancoEncontrado;
+        }
+      }
+
+      // Gestionamos bancos
+      var bancoBCP = new Banco("BCP", 5000);
+      bancoBCP.instalarCajero(10, 11, 800);
+      bancoBCP.instalarCajero(11, 12, 800);
+
+      var bancoNacion = new Banco("Nacion", 1000);
+
+      var bancosRegistradosCiudad = [];
+      bancosRegistradosCiudad.push(bancoBCP);
+      bancosRegistradosCiudad.push(bancoNacion);
+
+      // Gestionamos personas/clientes
+      var clienteMaria = new Cliente("Maria", "Leon");
+
+      bancoBCP.aperturarCuenta(clienteMaria);
+      bancoBCP.registrarOperacion(
+        "DEPOSITO",
+        clienteMaria.cuentasBancarias[0].nroCuenta,
+        100
+      );
+      bancoBCP.registrarOperacion(
+        "DEPOSITO",
+        clienteMaria.cuentasBancarias[0].nroCuenta,
+        150
+      );
+
+      bancoNacion.aperturarCuenta(clienteMaria);
+
+      var clientesDeBancos = [];
+      clientesDeBancos.push(clienteMaria);
+
+      console.group("Reporte");
+      bancosRegistradosCiudad.forEach((banco) => {
+        console.group("Banco " + banco.nombre);
+        console.log("Capital", banco.capital);
+        console.log("Cajeros", banco.cajeros);
+        console.log("Cuentas Ahorros Generadas", banco.cuentasAhorros);
+        console.groupEnd();
+      });
+
+      clientesDeBancos.forEach((cliente) => {
+        console.group(`Cliente ${cliente.getFullName()}`);
+        cliente.cuentasBancarias.forEach((cuentaCliente) => {
+          console.group(`Cuenta NRO: ${cuentaCliente.nroCuenta}`);
+          console.log("Banco", cuentaCliente.banco.nombre);
+          console.log("Fondos", cuentaCliente.fondos);
+          console.groupEnd();
+        });
+        console.groupEnd();
+      });
+      console.groupEnd();
+    </script>
+  </body>
+</html>
