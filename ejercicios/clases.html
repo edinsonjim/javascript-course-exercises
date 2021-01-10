@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Empresa(razonSocial, ruc) {
+        this.RazonSocial = razonSocial;
+        this.InversionTotal = 0;
+        this.RUC = ruc;
+        this.Inversion = 0;
+        this.TipoMoneda = "$";
+        this.Socios = null;
+        this.Empleados = [];
+
+        this.DefinirInversion = function (montoInversion) {
+          this.Inversion = this.Inversion + montoInversion;
+        };
+
+        this.ContratarEmpleado = function (empleado) {
+          this.Empleados.push(empleado);
+        };
+
+        this.PagarSueldoEmpleados = function () {
+          this.Empleados.forEach(function (empleado) {
+            var montoAPagar = empleado.Salario;
+            empleado.RecibirSueldo(montoAPagar);
+          });
+        };
+      }
+
+      function Persona(nombre, apellidos) {
+        this.Nombre = nombre;
+        this.Apellidos = apellidos;
+        this.Edad = null;
+        this.Ahorros = 0;
+
+        this.FullName = function () {
+          return this.Nombre + "" + this.Apellidos;
+        };
+      }
+
+      function Empleado(nombre, apellidos, salario) {
+        Persona.call(this, nombre, apellidos);
+        this.Salario = salario;
+        this.CuentaSalarial = 0;
+
+        this.RecibirSueldo = function (sueldo) {
+          this.CuentaSalarial += sueldo;
+        };
+      }
+
+      var empleado1 = new Empleado("Jose", "Ramos", 800);
+    </script>
+  </body>
+</html>
