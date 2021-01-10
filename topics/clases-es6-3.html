@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Definir variables hasta ahora hemos visto:
+      // 1. var -> funciona a nivel global (ya no se utiliza)
+      // 2. let (ES5) -> funciona en el escope definido.
+      // 3. const (ES5) -> funciona en el escope definido.
+      //
+      // Diferencia de Let vs const
+      // let: tu puedes modificar el valor de la variable definida
+      // const: una vez definido el valor no puedes cambiarlo, se mantiene constante
+
+      // TODO: Comunicacion de dos elementos/objetos.
+      // Un elemento envia un comando/mensaje y el otro lo recibe.
+      class Televisor {
+        // atributos con valor de defecto
+        estado = "APAGADO";
+        volumen = 0;
+
+        constructor(marca) {
+          this.marca = marca;
+        }
+
+        prender() {
+          this.estado = "ENCENDIDO";
+        }
+
+        apagar() {
+          this.estado = "APAGADO";
+        }
+
+        subirVolumen() {
+          if (this.estado === "ENCENDIDO") {
+            this.volumen += 5;
+          }
+        }
+      }
+
+      class ControlRemoto {
+        /**
+         * @params televisor Instancia de Televisor
+         */
+        constructor(televisor) {
+          this.tvInstancia = televisor;
+        }
+
+        /**
+         * @params tipoSegnal De tipo string
+         */
+        enviarSegnal(tipoSegnal) {
+          // if (tipoSegnal === "encender") {
+          //   this.tvInstancia.prender();
+          // } else if (tipoSegnal === "apagar") {
+          //   this.tvInstancia.apagar();
+          // } else if (tipoSegnal === "subirVolumen") {
+          //   this.tvInstancia.subirVolumen();
+          // }
+
+          switch (tipoSegnal) {
+            case "encender":
+              this.tvInstancia.prender();
+              break;
+            case "apagar":
+              this.tvInstancia.apagar();
+              break;
+            case "subirVolumen":
+              this.tvInstancia.subirVolumen();
+              break;
+            default:
+              throw new Error("Operacion no desarrollada");
+              break;
+          }
+        }
+      }
+
+      // Operaciones con el TV y Control Remoto
+      const tvLG = new Televisor("LG");
+      const lgControlR = new ControlRemoto(tvLG);
+
+      // ----
+
+      console.group("ESTADO INICIAL");
+      console.log("tvLG", tvLG);
+      console.log("lgControlR", lgControlR);
+      console.groupEnd();
+
+      console.group("OP: ENCENDER");
+      lgControlR.enviarSegnal("encender");
+      console.log("tvLG", tvLG);
+      console.log("lgControlR", lgControlR);
+      lgControlR.enviarSegnal("subirVolumen");
+      console.groupEnd();
+
+      console.group("OP: APAGAR");
+      lgControlR.enviarSegnal("apagar");
+      // esto no debe realizar nada, el tv esta apagado
+      lgControlR.enviarSegnal("subirVolumen");
+      console.log("tvLG", tvLG);
+      console.log("lgControlR", lgControlR);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
