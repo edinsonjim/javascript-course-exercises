@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List App</title>
+    <style>
+      /* CSS infile
+      Usado para estilos globales para toda la app 
+      */
+    </style>
+    <!-- importamos el CSS externo -->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Aqui va el contenido de la pagina -->
+    <div class="todo-container">
+      <div class="todo-header-container">
+        <div class="todo-input-container">
+          <form>
+            <input
+              class="margin-right"
+              type="text"
+              id="txtNombreTarea"
+              placeholder="Ingresa tu tarea..."
+              name="nombreTarea"
+            />
+            <div id="nombreTareaError" class="error-container"></div>
+          </form>
+        </div>
+        <div id="btnAgregarTarea" class="main-btn">Agregar</div>
+      </div>
+      <div class="todo-lista-container"></div>
+    </div>
+  </body>
+  <script>
+    // JavaScript infile
+    // usado para el boot/inicio de la aplication
+  </script>
+  <!-- importamos el JavaScript externo -->
+  <script type="text/javascript" src="js/main.js"></script>
+  <script
+    type="text/javascript"
+    src="js/helpers/validators/tarea.helper.js"
+  ></script>
+</html>

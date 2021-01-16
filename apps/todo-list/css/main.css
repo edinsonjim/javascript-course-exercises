@@ -1,0 +1,66 @@
+body {
+  background-color: #f6f8f9;
+  font-family: "Roboto", sans-serif;
+  max-width: 940px;
+  margin: auto;
+}
+
+/* Style app */
+.todo-container {
+  margin-top: 50px;
+  min-height: 120px;
+  width: 940px;
+  border: 1px solid #edf1f2;
+}
+
+.todo-header-container {
+  margin-top: 10px;
+  display: flex;
+  min-height: 70px;
+  width: 100%;
+  border: 1px solid#edf1f2;
+}
+
+.todo-lista-container {
+  min-height: 90px;
+}
+
+.todo-input-container {
+}
+.error-container {
+  color: #fc636b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+input {
+  height: 45px;
+  width: 800px;
+  border: 1px solid #e2e8ea;
+  border-radius: 5px;
+  outline: none;
+  color: #151b26;
+}
+input:focus {
+  border: 1px solid #b7bfc6;
+}
+.margin-right {
+  margin-right: 10px;
+}
+
+/* Style Buttons */
+.main-btn {
+  background-color: #14aaf5;
+  color: #ffffff; /* color del texto*/
+  height: 45px;
+  width: 108px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 45px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.main-btn:hover {
+  background-color: #0591d6;
+}
