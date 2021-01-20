@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    class Persona {
+      nombre = "Maria";
+      apellidos = "Leon";
+
+      #numeroTelefonico = 90090909;
+
+      constructor() {}
+
+      get numeroTelefonico() {
+        return this.#numeroTelefonico;
+      }
+
+      // Un metodo estatico no debe de utilizar ningun atributo/metodo de la clase
+      // en todo caso no deberia utilizar el 'this'
+      static decirAlgo(contenido) {
+        const esValido = Persona.isValid();
+        console.log("esValido", esValido);
+        return contenido + "!!!";
+      }
+
+      static isValid() {
+        return true;
+      }
+    }
+
+    // Clase y Objeto.
+    // Clase es la plantilla del objeto.
+    // Objecto es una instancia de una clase.
+
+    const personaObj = new Persona();
+    const personaObj2 = new Persona();
+
+    console.log(personaObj);
+    console.log(personaObj2.nombre);
+
+    // Para accedere a un metodo statico usamos la estructura <NombreClase>.<NombreMetodo>
+    console.log("--", Persona.decirAlgo());
+  </script>
+</html>

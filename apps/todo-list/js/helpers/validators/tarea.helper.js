@@ -1,10 +1,3 @@
-class ValidatorResponse {
-  constructor(isValid, message) {
-    this.isValid = isValid;
-    this.message = message;
-  }
-}
-
 class TareaHelper {
 
   // metodo estatico permite acceder al metodo sin instanciar la clase.

@@ -28,14 +28,39 @@
               type="text"
               id="txtNombreTarea"
               placeholder="Ingresa tu tarea..."
-              name="nombreTarea"
             />
             <div id="nombreTareaError" class="error-container"></div>
           </form>
         </div>
         <div id="btnAgregarTarea" class="main-btn">Agregar</div>
       </div>
-      <div class="todo-lista-container"></div>
+      <div id="actividadesContainer" class="actividades-container">
+        <div class="actividad-item">
+          <div class="actividad-pelota actividad-unchecked"></div>
+          <div class="actividad-label">Hacer el amor</div>
+        </div>
+        <div class="actividad-item">
+          <div class="actividad-pelota actividad-checked"></div>
+          <div class="actividad-label">Hacer el amor por segunda vez</div>
+        </div>
+        <div class="actividad-item">
+          <div class="actividad-pelota actividad-checked"></div>
+          <div class="actividad-label">Hacer el amor por segunda vez</div>
+        </div>
+        <div class="actividad-item">
+          <div class="actividad-pelota actividad-checked"></div>
+          <div class="actividad-label">Hacer el amor por segunda vez</div>
+        </div>
+        <div class="actividad-item">
+          <div class="actividad-pelota"></div>
+          <div class="actividad-label">otro elemtno</div>
+        </div>
+
+        <div class="actividad-item">
+          <div class="actividad-pelota actividad-checked"></div>
+          <div class="actividad-label">---</div>
+        </div>
+      </div>
     </div>
   </body>
   <script>
@@ -46,6 +71,11 @@
   <script type="text/javascript" src="js/main.js"></script>
   <script
     type="text/javascript"
+    src="js/helpers/validators/validator-response.js"
+  ></script>
+  <script
+    type="text/javascript"
     src="js/helpers/validators/tarea.helper.js"
   ></script>
+  <script type="text/javascript" src="js/models/actividad.js"></script>
 </html>
