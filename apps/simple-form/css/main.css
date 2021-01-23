@@ -1,3 +1,62 @@
 body {
   background-color: #f6f8f9;
 }
+.formulario-registro {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* vertical */
+.spacer-v {
+  margin-top: 5px;
+}
+
+/* horizontal */
+.spacer-h {
+  margin-left: 5px;
+}
+
+input {
+  background-color: #ffffff;
+  height: 25px;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 5px;
+  margin: 0;
+  padding: 5px;
+  outline: none;
+}
+
+input:focus {
+  background-color: #f6f5f5;
+}
+
+button {
+  height: 38px;
+  background-color: #ffffff;
+  border: none;
+  width: 100px;
+  cursor: pointer;
+  color: #5d5d5d;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #049b93;
+  color: #ffffff;
+}
+
+.btn-main {
+  color: #ffffff;
+  background-color: #00b5ad;
+}
+
+h4 {
+  color: #00b5ad;
+  font-size: 14px;
+}
+
+.frm-registro-errors {
+  color: red;
+  font-size: 12px;
+}

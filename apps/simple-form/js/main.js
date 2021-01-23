@@ -4,7 +4,6 @@ const btnAnularRef = document.getElementById("btnAnular");
 
 btnAgregarRef.addEventListener('click', () => {
   // Operaciones en el evento 'click' del boton.
-  console.log('Boton presionado');
 
   // Leemos la informacion ingresado en los inputs.
   const nombreRef = document.getElementById("txtNombre");
@@ -15,21 +14,30 @@ btnAgregarRef.addEventListener('click', () => {
   const nombre = nombreRef.value;
   const apellidos = apellidosRef.value;
   const edad = edadRef.value;
+
+  try {
+    const personaRegistrada = new Persona(nombre, apellidos, edad);
+
+    const personasRegistradasUlRef = document.getElementById('personasRegistradasUL');
+
+    // creamos el elemento <li> con la info de la persona.
+    const liContentPersona = getLiHtml(personaRegistrada.fullInfo);
+
+    // agregagos el contenido html al contenedor
+    personasRegistradasUlRef.innerHTML += liContentPersona;
+    
+    // limpiamos los inputs
+    nombreRef.value = '';
+    apellidosRef.value = '';
+    edadRef.value = '';
+
+    // Limpiamos el contenedor de errores
+    renderErrorHtml('');
+  } catch (error) {
+    // Mostramos el mensaje del error en el html
+    renderErrorHtml(error.message);
+  }
   
-  const personaRegistrada = new Persona(nombre, apellidos, edad);
-
-  const personasRegistradasUlRef = document.getElementById('personasRegistradasUL');
-
-  // creamos el elemento <li> con la info de la persona.
-  const liContentPersona = getLiHtml(personaRegistrada.fullInfo);
-
-  // agregagos el contenido html al contenedor
-  personasRegistradasUlRef.innerHTML += liContentPersona;
-  
-  // limpiamos los inputs
-  nombreRef.value = '';
-  apellidosRef.value = '';
-  edadRef.value = '';
 });
 
 
@@ -44,8 +52,11 @@ btnAnularRef.addEventListener('click', () => {
   edadRef.value = '';
 })
 
-
-
 function getLiHtml(contenido) {
   return `<li>${contenido}</li>`
+}
+
+function renderErrorHtml(mensaje) {
+  const frmRegistrarErrorsRef = document.getElementById('frmRegistrarErrorsC');
+  frmRegistrarErrorsRef.innerHTML = mensaje;
 }

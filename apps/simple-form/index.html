@@ -7,18 +7,40 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <body>
-    <input id="txtNombre" type="text" placeholder="Ingresa nombres" />
-    <input id="txtApellidos" type="text" placeholder="Ingresa apellidos" />
-    <input id="txtEdad" type="number" placeholder="Ingresa edad" />
-    <br />
-    <button id="btnAnular">Anular</button>
-    <button id="btnAgregar">Agregar</button>
+    <div>
+      <div class="formulario-registro">
+        <h4>Registrar persona</h4>
+        <input
+          class="spacer-v"
+          id="txtNombre"
+          type="text"
+          placeholder="Ingresa nombres"
+        />
+        <input
+          class="spacer-v"
+          id="txtApellidos"
+          type="text"
+          placeholder="Ingresa apellidos"
+        />
+        <input
+          class="spacer-v"
+          id="txtEdad"
+          type="number"
+          placeholder="Ingresa edad"
+        />
+        <br />
+        <div id="frmRegistrarErrors" class="frm-registro-errors spacer-v"></div>
+        <br />
+        <button class="spacer-v" id="btnAnular">Anular</button>
+        <button class="spacer-v btn-main" id="btnAgregar">Agregar</button>
+      </div>
+    </div>
 
     <br />
     <br />
     <br />
     <div>
-      <h4>Persona registradas</h4>
+      <h4>Lista Persona registradas</h4>
       <ul id="personasRegistradasUL">
         <li>Maria Leon (29)</li>
       </ul>
