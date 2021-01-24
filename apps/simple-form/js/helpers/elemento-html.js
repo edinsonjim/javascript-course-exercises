@@ -7,13 +7,16 @@ function renderErrorHtml(mensaje) {
  * @param persona Persona persona debe ser una instancia de la clase Persona
  */
 function getLiHtml(persona) {
-  return `<li>
+  return `<li class="spacer-v">
     ${persona.fullInfo}
     <button 
       persona-id="${persona.id}" 
-      class="btn-eliminar-${persona.id}"
+      class="btn-danger btn-eliminar-${persona.id}"
       onclick="eliminarPersona(${persona.id})"
       >Eliminar</button>
+    <button
+      onclick="editarPersona(${persona.id})"
+      >Editar</button>
   </li>`;
 }
 

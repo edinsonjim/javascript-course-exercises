@@ -51,6 +51,11 @@ button:hover {
   background-color: #00b5ad;
 }
 
+.btn-danger {
+  color: #ffffff;
+  background-color: #af1b01;
+}
+
 h4 {
   color: #00b5ad;
   font-size: 14px;

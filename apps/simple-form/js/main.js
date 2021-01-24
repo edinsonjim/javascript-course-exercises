@@ -3,9 +3,11 @@ var listaPersonaRegistradas = [];
 // Referencia al boton "btnAgregar" en el HTML
 const btnAgregarRef = document.getElementById("btnAgregar");
 const btnAnularRef = document.getElementById("btnAnular");
+const btnActualizarRef = document.getElementById("btnActualizar");
 
 btnAgregarRef.addEventListener("click", agregarController);
 btnAnularRef.addEventListener("click", anularController);
+btnActualizarRef.addEventListener("click", actualizarController);
 
 /**
  * eliminarPersona puede ser invocado desde el html
@@ -21,4 +23,13 @@ function eliminarPersona(personaId) {
   }
 
   eliminarController(parseInt(personaId));
+}
+
+/**
+ * editarPersona puede ser invocado desde el html
+ * en el evento onclick
+ * @param {number} personaId
+ */
+function editarPersona(personaId) {
+  editarController(personaId);
 }

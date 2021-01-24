@@ -10,6 +10,7 @@
     <div>
       <div class="formulario-registro">
         <h4>Registrar persona</h4>
+        <input type="hidden" id="txtId" />
         <input
           class="spacer-v"
           id="txtNombre"
@@ -33,6 +34,7 @@
         <br />
         <button class="spacer-v" id="btnAnular">Anular</button>
         <button class="spacer-v btn-main" id="btnAgregar">Agregar</button>
+        <button class="spacer-v btn-main" id="btnActualizar">Actualizar</button>
       </div>
     </div>
 
@@ -45,9 +47,13 @@
         <!-- ejemplo de como queremos generarlo desde JS -->
         <li>
           Maria Leon (29)
-          <button class="btn-eliminar-10" onclick="eliminarPersona(10)">
+          <button
+            class="btn-eliminar-10 btn-danger"
+            onclick="eliminarPersona(10)"
+          >
             Eliminar
           </button>
+          <button onclick="editarPersona(10)">Editar</button>
         </li>
       </ul>
     </div>
@@ -64,6 +70,14 @@
   <script
     type="text/javascript"
     src="js/controllers/eliminar.controller.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="js/controllers/editar.controller.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="js/controllers/actualizar.controller.js"
   ></script>
   <script type="text/javascript" src="js/helpers/elemento-html.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
