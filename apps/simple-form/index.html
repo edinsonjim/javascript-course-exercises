@@ -42,7 +42,13 @@
     <div>
       <h4>Lista Persona registradas</h4>
       <ul id="personasRegistradasUL">
-        <li>Maria Leon (29)</li>
+        <!-- ejemplo de como queremos generarlo desde JS -->
+        <li>
+          Maria Leon (29)
+          <button class="btn-eliminar-10" onclick="eliminarPersona(10)">
+            Eliminar
+          </button>
+        </li>
       </ul>
     </div>
   </body>
@@ -54,6 +60,10 @@
   <script
     type="text/javascript"
     src="js/controllers/anular.controller.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="js/controllers/eliminar.controller.js"
   ></script>
   <script type="text/javascript" src="js/helpers/elemento-html.js"></script>
   <script type="text/javascript" src="js/main.js"></script>

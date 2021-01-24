@@ -14,21 +14,28 @@ function agregarController() {
   try {
     const personaRegistrada = new Persona(nombre, apellidos, edad);
 
-    const personasRegistradasUlRef = document.getElementById('personasRegistradasUL');
+    // agregamos el objeto persona a la lista.
+    listaPersonaRegistradas.push(personaRegistrada);
 
-    // creamos el elemento <li> con la info de la persona.
-    const liContentPersona = getLiHtml(personaRegistrada.fullInfo);
+    const personasRegistradasUlRef = document.getElementById(
+      "personasRegistradasUL"
+    );
 
-    // agregagos el contenido html al contenedor
-    personasRegistradasUlRef.innerHTML += liContentPersona;
-    
+    // generamos el <li> de la lista 'listaPersonaRegistradas'
+    const liPersonasHtml = getListaPersonasAsLiHtml(listaPersonaRegistradas);
+
+    // agregar el <li> generado al contenedor 'personasRegistradasUL' en el HTML
+    personasRegistradasUlRef.innerHTML = liPersonasHtml;
+
     // limpiamos los inputs
-    nombreRef.value = '';
-    apellidosRef.value = '';
-    edadRef.value = '';
+    nombreRef.value = "";
+    apellidosRef.value = "";
+    edadRef.value = "";
 
     // Limpiamos el contenedor de errores
-    renderErrorHtml('');
+    renderErrorHtml("");
+
+    console.log("listaPersonaRegistradas", listaPersonaRegistradas);
   } catch (error) {
     // Mostramos el mensaje del error en el html
     renderErrorHtml(error.message);
