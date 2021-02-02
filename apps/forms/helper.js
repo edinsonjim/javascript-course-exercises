@@ -19,3 +19,23 @@ function generarNombreUsuario(nombre, apellidoPaterno, apellidoMaterno) {
 
   return `${primeraLetraNombre}${apellidoPaterno}${tresPrimerasLetrasNombre}`;
 }
+/**
+ * Retorna la edad en base al ano actual
+ * @param {string} fechaNacimiento con formato 'yyyy-mm-dd'
+ */
+function calcEdadDeFechaNacimiento(fechaNacimiento) {
+  // ano del ahora - el ano de nacimiento = edad
+  // 2020 - 1970 => 50 anos
+
+  // new Date(fecha) crea un objeto Date de la fecha ingresada como parametro
+  const fechaNacimientoDate = new Date(fechaNacimiento);
+
+  // new Date() crea un objeto Date con la fecha/hora/minuto/segundo/milisegundo actual
+  const ahora = new Date();
+
+  // getFullYear retorna el numero del anno
+  const anoNacimiento = fechaNacimientoDate.getFullYear();
+  const anoAhora = ahora.getFullYear();
+
+  return anoAhora - anoNacimiento;
+}

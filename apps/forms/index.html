@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
     <h4>Preferencia de usuarios</h4>
@@ -19,11 +20,17 @@
     <input type="text" id="txtNombre" placeholder="Nombre" />
     <input type="text" id="txtApellidoPaterno" placeholder="Apellido Paterno" />
     <input type="text" id="txtApellidoMaterno" placeholder="Apellido Materno" />
-    <input type="date" placeholder="Fecha Nacimiento" />
+    <input
+      type="date"
+      id="txtFechaNacimiento"
+      onchange="onChangeFechaNacimiento(event)"
+      onclick="onClicFechaNacimineto(event)"
+      placeholder="Fecha Nacimiento"
+    />
 
     <!-- edad deberia ser calculada con la fecha de nacimiento -->
     <!-- este campo deberia ser de tipo readOnly/solo lectura -->
-    <input type="number" disabled placeholder="Edad" />
+    <input type="number" id="txtEdad" disabled placeholder="Edad" />
 
     <hr />
     <h5>Estado civil</h5>
@@ -66,10 +73,14 @@
     <hr />
 
     <label>Acepta las condiciones del servicio?</label>
-    <input type="checkbox" name="condicionesServicio" value="acepto" />
+    <input
+      type="checkbox"
+      name="condicionesServicio"
+      onChange="onChangeCondicionesServicio(event)"
+    />
     <!-- quando el usuario acepta las condiciones, se activa el boton de guardar -->
     <hr />
-    <button disabled>Guardar</button>
+    <button disabled id="btnGuardar">Guardar</button>
   </body>
   <script type="text/javascript" src="./helper.js"></script>
   <script type="text/javascript" src="./index.js"></script>
