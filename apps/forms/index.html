@@ -58,8 +58,17 @@
     <input type="radio" name="marcasCelulares" value="samsung" />
 
     <h5>Frutas</h5>
+
+    <label>Seleccionar todas</label>
+    <input
+      type="checkbox"
+      onchange="onChangeSeleccionarTodas(event)"
+      value="all"
+    />
+    <br />
+
     <label>Platano</label>
-    <input type="checkbox" value="platano" />
+    <input type="checkbox" name="frutas" value="platano" />
     <br />
 
     <label>Manzana</label>

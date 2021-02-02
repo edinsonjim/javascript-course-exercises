@@ -15,6 +15,7 @@ const apellidoPaternoRef = document.getElementById("txtApellidoPaterno");
 const apellidoMaternoRef = document.getElementById("txtApellidoMaterno");
 const fechaNacimientoRef = document.getElementById("txtFechaNacimiento");
 const edadRef = document.getElementById("txtEdad");
+const btnGuardarRef = document.getElementById("btnGuardar");
 
 /**
  * evento: 'change'
@@ -116,9 +117,83 @@ function onChangeCondicionesServicio(event) {
   }
 }
 
-// querySelectorAll permite obtener todos los elementos que cumplan una condicion
-const estadoCivilRadiosRef = document.querySelectorAll(
-  'input[name="estadoCivil"]'
-);
-estadoCivilRadiosRef;
-console.log("estadoCivilRadiosRef", estadoCivilRadiosRef);
+btnGuardarRef.addEventListener("click", () => {
+  // TODO:
+  // 1. Obtener el valor seleccionado de estado civil
+  // 2. Obtener el valor seleccionado dde marcas de celulares
+  // 3. Obtener las frutas seleccionadas
+
+  // querySelectorAll permite obtener todos los elementos que cumplan una condicion
+  const estadoCivilRadiosRef = document.querySelectorAll(
+    'input[name="estadoCivil"]'
+  );
+
+  // obtenemos el valor seleccionado
+  let estadoCivilSeleccionado = null;
+
+  // recorremos todos los elementos de tipo input[name=estadoCivil]
+  estadoCivilRadiosRef.forEach((rbEstadoCivilRef) => {
+    // el elemento con checked=true es el elemento seleccionado
+    if (rbEstadoCivilRef.checked) {
+      // del elemento seleccionado obtener el valor
+      estadoCivilSeleccionado = rbEstadoCivilRef.value;
+    }
+  });
+
+  // con el valor seleccionado podemos hacer lo q ...
+  switch (estadoCivilSeleccionado) {
+    case "soltera":
+      alert("Que esperas de la vida, ve a buscar un par!");
+      break;
+    case "viuda":
+      alert("La vida siemrpe da motivos de cambio");
+      break;
+  }
+
+  // IN 2.
+  const marcasCelularesRadiosRef = document.querySelectorAll(
+    'input[name="marcasCelulares"]'
+  );
+  console.log("marcasCelularesRadiosRef", marcasCelularesRadiosRef);
+  let marcaCelularSeleccionada = null;
+  marcasCelularesRadiosRef.forEach((rbMarcaCelularRef) => {
+    if (rbMarcaCelularRef.checked) {
+      marcaCelularSeleccionada = rbMarcaCelularRef.value;
+    }
+  });
+
+  switch (marcaCelularSeleccionada) {
+    case "apple":
+      alert("Eres cool!");
+      break;
+  }
+
+  // 3:
+  const frutasCheckboxRef = document.querySelectorAll('input[name="frutas"]');
+  console.log("frutasCheckboxRef", frutasCheckboxRef);
+  let frutasSeleccionadas = [];
+  frutasCheckboxRef.forEach((cbFrutaRef) => {
+    if (cbFrutaRef.checked) {
+      frutasSeleccionadas.push(cbFrutaRef.value);
+    }
+  });
+
+  console.log("frutasSeleccionadas", frutasSeleccionadas);
+});
+
+function onChangeSeleccionarTodas(event) {
+  console.log("event", event);
+  const selecionarAllFrutasSeleccionado = event.target.checked;
+
+  const frutasCheckboxRef = document.querySelectorAll('input[name="frutas"]');
+
+  if (selecionarAllFrutasSeleccionado) {
+    frutasCheckboxRef.forEach((cbFrutaRef) => {
+      cbFrutaRef.checked = true;
+    });
+  } else {
+    frutasCheckboxRef.forEach((cbFrutaRef) => {
+      cbFrutaRef.checked = false;
+    });
+  }
+}
