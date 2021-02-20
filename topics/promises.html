@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // TODO: Promise
+      //  Sincronas  ->
+      //     Se realiza paso por paso donde cada llamada a funcion/metodo retorna un valor.
+      //  Asincronas ->
+      //     Invocas una llamada a un metodo/function pero
+
+      tareaLlamarAkemi = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // cuerpo a ejecutar luego q pasa el tiempo definido como input(8000)
+          resolve("tareaLlamarAkemi [OK]");
+        }, 8000);
+      });
+
+      tareaLlamarMaria = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("tareaLlamarMaria [OK]");
+        }, 5000);
+      });
+
+      tareaLlamarMario = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("tareaLlamarMario [OK]");
+        }, 1000);
+      });
+
+      tareaLlamarRita = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("tareaLlamarRita [OK]");
+        }, 2000);
+      });
+
+      tareaLlamarKarina = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("tareaLlamarKarina [OK]");
+        }, 6000);
+      });
+
+      tareaLlamarLuna = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("tareaLlamarLuna [OK]");
+        }, 1000);
+      });
+
+      // -------
+
+      tareaLlamarAkemi.then((mensaje) => {
+        console.log("[tareaLlamarAkemi] ---->", mensaje);
+      });
+
+      tareaLlamarMaria
+        .then((mensaje) => {
+          console.log("[tareaLlamarMaria] ---->", mensaje);
+        })
+        .then(() => {
+          return tareaLlamarLuna;
+        })
+        .then((mensaje) => {
+          console.log("[tareaLlamarLuna] ---->", mensaje);
+        });
+
+      tareaLlamarMario
+        .then((mensaje) => {
+          console.log("[tareaLlamarMario] ---->", mensaje);
+        })
+        .then(() => {
+          console.log("inicianod la proxima tarea...");
+        })
+        .then(() => {
+          console.log("iniciando tareaLlamarRita ");
+          tareaLlamarRita
+            .then((mensaje) => {
+              console.log("[tareaLlamarRita] --->", mensaje);
+            })
+            .then(() => {
+              tareaLlamarKarina.then((mensaje) => {
+                console.log("[tareaLlamarKarina] --->", mensaje);
+              });
+            });
+        });
+
+      console.log("escrito luego de todas las promesas.");
+    </script>
+  </body>
+</html>

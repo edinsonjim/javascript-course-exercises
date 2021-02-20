@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const nombreAValidar = "Akem";
+      const novioAkemi = "Mario";
+
+      const validarNombres = new Promise((resolve, reject) => {
+        if (nombreAValidar == "Akemi") {
+          return resolve(true);
+        }
+
+        return reject({ mensaje: "Nombre no valido", error: true });
+      });
+
+      const validarNovio = new Promise((resolve, reject) => {
+        if (novioAkemi === "J") {
+          return resolve(true);
+        }
+
+        return reject({ mensaje: "Novio no valido", error: true });
+      });
+
+      const continuarOperacion = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("TODO OK");
+        }, 2000);
+      });
+
+      validarNombres
+        .then(() => {
+          return validarNovio.catch((resolve) => {
+            return resolve(true);
+          });
+        })
+        .catch((error) => {
+          console.log("error", error);
+          return new Promise((resolve) => {
+            return resolve(true);
+          });
+        })
+        .then(() => {
+          return continuarOperacion;
+        })
+        .then((mensaje) => {
+          console.log("OK -->", mensaje);
+        })
+        .catch((error) => {
+          console.log("ERORR -->", error);
+        });
+    </script>
+  </body>
+</html>

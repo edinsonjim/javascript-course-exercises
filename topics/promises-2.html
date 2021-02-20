@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // TODO: otros ejemplos con Promises
+      cantidadDe100 = 1;
+      cantidadDe50 = 1;
+      cantidadDe10 = 1;
+
+      const cajaDe10 = new Promise((resolve, reject) => {
+        if (cantidadDe10 > 0) {
+          return resolve("[OK]");
+        }
+
+        return reject("[ERROR]");
+      });
+
+      const cajaDe50 = new Promise((resolve, reject) => {
+        if (cantidadDe50 > 0) {
+          return resolve("[OK]");
+        }
+
+        return reject("[ERROR]");
+      });
+
+      const dinero = cajaDe10
+        .then((ok) => {
+          // then se ejecuta solo si la promise retorna un resolve()
+          console.log("Esiste dinero de 10", ok);
+          // ejecutas otras tareas
+          cajaDe50
+            .then((ok) => {
+              console.log("cajaDe50 OK", ok);
+            })
+            .catch((error) => {
+              console.log("cajaDe50 ERROR", error);
+            });
+        })
+        .catch((error) => {
+          // catch se ejecuta solo si la promise retorna un reject
+          console.log("No hay dinero de 10", error);
+        });
+    </script>
+  </body>
+</html>
